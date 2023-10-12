@@ -1,0 +1,105 @@
+[
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    // Special case: when in first editor group (pane), go to sidebar
+    // if visible.
+    "key": "ctrl+h",
+    "command": "workbench.explorer.fileView.focus",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert' && activeEditorGroupIndex == 1 && explorerViewletVisible"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+  },
+  {
+    // Special case: when in file explorer, go right (back to 1st open
+    // editor group)
+    "key": "ctrl+l",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "filesExplorerFocus"
+  },
+  {
+    "key": "a",
+    "command": "workbench.files.action.createFileFromExplorer",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "workbench.files.action.createFolderFromExplorer",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "enter",
+    "command": "list.select",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "alt+\\",
+    "command": "workbench.action.splitEditorDown"
+  },
+  {
+    "key": "alt+x",
+    "command": "workbench.action.toggleLightDarkThemes"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.files.saveWithoutFormatting"
+  },
+  {
+    "key": "ctrl+k ctrl+shift+s",
+    "command": "-workbench.action.files.saveWithoutFormatting"
+  },
+  // Toggle Terminal
+  {
+    "key": "f1",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleMaximizedPanel",
+        "workbench.action.terminal.focus"
+      ]
+    },
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "f1",
+    "command": "runCommands",
+    "args": {
+      "commands": ["workbench.action.closePanel"]
+    },
+    "when": "panelMaximized"
+  },
+  // END: Toggle Terminal
+  // Fuzzy Search outside
+  {
+    "key": "space f f",
+    "command": "workbench.action.quickOpen",
+    "when": "!inputFocus && vim.active"
+  },
+  // Explorer Toggle
+  {
+    "key": "space f e",
+    "command": "workbench.explorer.fileView.focus",
+    "when": "!inputFocus && vim.active"
+  },
+  {
+    "key": "space f e",
+    "command": "workbench.action.closeSidebar",
+    "when": "filesExplorerFocus && vim.active"
+  }
+]

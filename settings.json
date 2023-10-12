@@ -1,0 +1,99 @@
+{
+  /*
+   * ---------------------------------------------------------------------------
+   * VIM Settings
+   *
+   * These are my default settings for VIM extension.
+   */
+  // To make VIM faster
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  // Include trailing whitespace when changing word. This configures the cw
+  // action to act consistently as its siblings (yw and dw) instead of acting as
+  // ce.
+  // Default: false
+  "vim.changeWordIncludesWhitespace": false,
+  // Enable Vim ctrl keys overriding common VS Code operations such as copy,
+  // paste, find, etc.
+  // Default: true
+  "vim.useCtrlKeys": true,
+  // Use the system clipboard register (*) as the default register
+  // Default: false
+  "vim.useSystemClipboard": true,
+  // Enable highlighting when yanking
+  // Default: false
+  "vim.highlightedyank.enable": true,
+  // Leader key
+  // Default: \
+  "vim.leader": " ",
+  // Highlights all text matching current search
+  // Default: false
+  "vim.hlsearch": true,
+
+  /*
+   * ---------------------------------------------------------------------------
+   * VIM Plugin Settings
+   */
+  // Enables motions like <leader><leader>s
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.sneakUseIgnorecaseAndSmartcase": true,
+  // Makes f search forward on other lines
+  "vim.sneakReplacesF": true,
+  // Enables <leader>w/e/b for camelCase or snake_case word segment
+  "vim.camelCaseMotion.enable": true,
+
+  /*
+   * ---------------------------------------------------------------------------
+   * VIM Key Bindings
+   */
+  // TODO: Make <leader>p works even if an editor is not open
+  "vim.normalModeKeyBindings": [
+    // H moves start of the line
+    { "before": ["H"], "after": ["^"] },
+    // L Moves end of the line
+    { "before": ["L"], "after": ["$"] },
+    // <leader>o adds new line in the current position
+    { "before": ["<leader>", "o"], "after": ["a", "<Enter>", "<esc>"] },
+    // Open commands menu
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    // Fuzzy file search
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "e"],
+      "commands": ["workbench.explorer.fileView.focus"]
+    },
+    // Go between files with <Tab>
+    { "before": ["<tab>"], "commands": ["workbench.action.nextEditor"] },
+    { "before": ["<S-tab>"], "commands": ["workbench.action.previousEditor"] },
+    // Close file
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [],
+  "vim.operatorPendingModeKeyBindings": [
+    // H moves start of the line
+    { "before": ["H"], "after": ["^"] },
+    // L Moves end of the line
+    { "before": ["L"], "after": ["$"] },
+    // p, x, c, s does not add to register
+    { "before": ["p"], "after": ["_", "p"] },
+    { "before": ["x"], "after": ["_", "x"] },
+    // { "before": ["s"], "after": ["_", "s"] },
+    { "before": ["c"], "after": ["_", "c"] }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // Keep visual mode while indenting
+    { "before": [">"], "after": [">", "g", "v"] },
+    { "before": ["<"], "after": ["<", "g", "v"] }
+  ]
+}
